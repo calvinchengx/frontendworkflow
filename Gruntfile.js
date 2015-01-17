@@ -1,4 +1,5 @@
 module.exports = function(grunt) {
+  "use strict";
 
   // task configurations
   var config = {
@@ -11,6 +12,27 @@ module.exports = function(grunt) {
           "js/app.js",
           ]
       }
+    },
+    sass: {
+        dist: {
+            files: [{
+                expand: true,
+                cwd: "styles",
+                src: ["*.scss"],
+                dest: "../public",
+                ext: ".css"
+            }]
+        }
+    },
+    watch: {
+        app: {
+            files: ["<%= concat.app.src %>"],
+            tasks: ["concat"]
+        },
+        sass: {
+            files: ["sass/**/*.{scss,sass}", "sass/_partials/**/*.{scss,sass}"],
+            tasks: ["sass"]
+        }
     }
   };
 
@@ -22,9 +44,10 @@ module.exports = function(grunt) {
 
   // loading external tasks (aka: plugins)
   grunt.loadNpmTasks("grunt-contrib-concat");
+  grunt.loadNpmTasks("grunt-contrib-watch");
+  grunt.loadNpmTasks("grunt-sass");
 
   // creating workflows
-  grunt.registerTask("default", ["concat"]);
-
+  grunt.registerTask("default", ["sass", "concat", "watch"]);
 
 };
