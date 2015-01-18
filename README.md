@@ -11,3 +11,4 @@
 - npm install express --save-dev
 - npm install compression --save-dev
 - npm install errorhandler --save-dev
+- npm install grunt-contrib-copy --save

@@ -62,6 +62,10 @@ module.exports = function(grunt) {
             files: ["<%= files.sass.src %>"],
             tasks: ["sass:dist"]
         }
+    },
+    // one-off task "grunt clean", which clears our generated files and build files.
+    clean: {
+        workspaces: ["dist", "generated"]
     }
   };
 
@@ -76,6 +80,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-contrib-watch");
   grunt.loadNpmTasks("grunt-sass");
   grunt.loadNpmTasks("grunt-contrib-copy");
+  grunt.loadNpmTasks("grunt-contrib-clean");
 
   // creating workflows
   grunt.registerTask("default", ["copy", "sass:dist", "concat", "server", "watch"]);
