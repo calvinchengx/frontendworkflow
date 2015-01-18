@@ -5,6 +5,9 @@ module.exports = function(grunt) {
   var config = {
     // files that our tasks will use
     files: {
+      html: {
+        src: "index.html"
+      },
       js: {
         src: [
           "vendor/js/jquery.js",
@@ -34,7 +37,7 @@ module.exports = function(grunt) {
     copy: {
       html: {
         dest: "generated/index.html",
-        src: "index.html"    
+        src: "<%= files.html.src %>"
       }
     },
     server: {
@@ -44,6 +47,13 @@ module.exports = function(grunt) {
         }
     },
     watch: {
+        options: {
+            livereload: true
+        },
+        html: {
+            files: ["<%= files.html.src %>"],
+            tasks: ["copy"]
+        },
         js: {
             files: ["<%= files.js.src %>"],
             tasks: ["concat"]
