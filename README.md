@@ -8,3 +8,6 @@
 - npm install grunt-contrib-watch --save
 - npm install grunt-sass --save
 - npm install grunt-contrib-copy --save
+- npm install express --save-dev
+- npm install compression --save-dev
+- npm install errorhandler --save-dev
