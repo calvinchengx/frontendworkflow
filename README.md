@@ -6,4 +6,5 @@
 - mkdir tasks
 - npm install grunt-contrib-concat --save
 - npm install grunt-contrib-watch --save
-- npm install grunt-contrib-sass --save
+- npm install grunt-sass --save
+- npm install grunt-contrib-copy --save
