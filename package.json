@@ -8,6 +8,8 @@
   "author": "Calvin Cheng",
   "license": "MIT",
   "devDependencies": {
+    "errorhandler": "^1.3.2",
+    "express": "^4.11.0",
     "grunt-cli": "^0.1.13"
   },
   "dependencies": {

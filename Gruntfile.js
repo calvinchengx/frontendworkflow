@@ -37,6 +37,12 @@ module.exports = function(grunt) {
         src: "index.html"    
       }
     },
+    server: {
+        base: "generated",
+        web: {
+            port: 8000
+        }
+    },
     watch: {
         js: {
             files: ["<%= files.js.src %>"],
@@ -62,6 +68,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-contrib-copy");
 
   // creating workflows
-  grunt.registerTask("default", ["copy", "sass:dist", "concat", "watch"]);
+  grunt.registerTask("default", ["copy", "sass:dist", "concat", "server", "watch"]);
 
 };
