@@ -1,0 +1,13 @@
+{
+  "name": "frontendworkflow",
+  "version": "1.0.0",
+  "homepage": "https://github.com/calvinchengx/frontendworkflow",
+  "authors": [
+    "Calvin Cheng <linchuan.cheng@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "mithril": "~0.1.28"
+  }
+}

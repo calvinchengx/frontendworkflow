@@ -13,3 +13,4 @@
 - npm install errorhandler --save-dev
 - npm install grunt-contrib-copy --save
 - npm install grunt-contrib-uglify --save
+- npm install grunt-browserify --save

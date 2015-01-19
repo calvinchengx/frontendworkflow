@@ -17,7 +17,7 @@ module.exports = function(grunt) {
       },
       js: {
         vendor: [
-
+          'bower_components/mithril/mithril.min.js'
         ],
         app: {
           main: 'js/app.js',
