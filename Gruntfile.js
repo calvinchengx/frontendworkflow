@@ -74,6 +74,11 @@ module.exports = function(grunt) {
             port: 8000
         }
     },
+    open: {
+        dev: {
+            path: "http://localhost:<%= server.web.port %>"
+        }
+    },
     watch: {
         options: {
             livereload: true
@@ -110,9 +115,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-contrib-copy");
   grunt.loadNpmTasks("grunt-contrib-clean");
   grunt.loadNpmTasks("grunt-contrib-uglify");
+  grunt.loadNpmTasks("grunt-open");
 
   // creating workflows
-  grunt.registerTask("default", ["copy", "sass:dev", "concat", "server", "watch"]);
+  grunt.registerTask("default", ["copy", "sass:dev", "concat", "server", "open", "watch"]);
   grunt.registerTask("build", ["copy", "sass:dist", "concat", "uglify"]);
 
 };
