@@ -69,7 +69,7 @@ module.exports = function(grunt) {
       }
     },
     server: {
-        base: "generated",
+        base: (process.env.SERVER_BASE || "generated"),
         web: {
             port: 8000
         }
@@ -114,5 +114,6 @@ module.exports = function(grunt) {
   // creating workflows
   grunt.registerTask("default", ["copy", "sass:dev", "concat", "server", "open", "watch"]);
   grunt.registerTask("build", ["copy", "sass:dist", "concat", "uglify"]);
+  grunt.registerTask("prodsim", ["build", "server", "open", "watch"]);
 
 };
