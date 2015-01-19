@@ -51,14 +51,16 @@ module.exports = function(grunt) {
     sass: {
         dev: {
           options: {
-            sourceMap: true
+            sourceMap: true,
+            includePaths: ['bower_components/susy/sass']
           },
           dest: 'generated/css/styles.css',
           src: '<%= files.sass.src %>'
         },
         dist: {
           options: {
-            outputStyle: 'compressed'
+            outputStyle: 'compressed',
+            includePaths: ['bower_components/susy/sass']
           },
           dest: 'dist/css/styles.css',
           src: '<%= files.sass.src %>'
