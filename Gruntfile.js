@@ -109,13 +109,7 @@ module.exports = function(grunt) {
   grunt.loadTasks("tasks");
 
   // loading external tasks (aka: plugins)
-  grunt.loadNpmTasks("grunt-contrib-concat");
-  grunt.loadNpmTasks("grunt-contrib-watch");
-  grunt.loadNpmTasks("grunt-sass");
-  grunt.loadNpmTasks("grunt-contrib-copy");
-  grunt.loadNpmTasks("grunt-contrib-clean");
-  grunt.loadNpmTasks("grunt-contrib-uglify");
-  grunt.loadNpmTasks("grunt-open");
+  require("matchdep").filterAll("grunt-*").forEach(grunt.loadNpmTasks);
 
   // creating workflows
   grunt.registerTask("default", ["copy", "sass:dev", "concat", "server", "open", "watch"]);
