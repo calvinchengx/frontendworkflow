@@ -3,6 +3,13 @@ module.exports = function(grunt) {
 
   // task configurations
   var config = {
+    // meta data from package.json
+    pkg: grunt.file.readJSON("package.json"),
+    banner: "/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - " +
+      "<%= grunt.template.today(\"yyyy-mm-dd\") %>\n" +
+      "<%= pkg.homepage ? \"* \" + pkg.homepage + \"\\n\" : \"\" %>" +
+      "* Copyright (c) <%= grunt.template.today(\"yyyy\") %> <%= pkg.author.name %>;" +
+      " Licensed <%= _.pluck(pkg.licenses, \"type\").join(\", \") %> */\n",
     // files that our tasks will use
     files: {
       html: {
@@ -29,15 +36,36 @@ module.exports = function(grunt) {
       }
     },
     sass: {
-        dist: {
+        dev: {
+          options: {
+            sourceMap: true
+          },
           dest: "generated/css/styles.css",
+          src: "<%= files.sass.src %>"
+        },
+        dist: {
+          options: {
+            outputStyle: "compressed"
+          },
+          dest: "dist/css/styles.css",
           src: "<%= files.sass.src %>"
         }
     },
     copy: {
       html: {
-        dest: "generated/index.html",
-        src: "<%= files.html.src %>"
+        files: {
+          "generated/index.html": "<%= files.html.src %>",
+          "dist/index.html": "<%= files.html.src %>"
+        }
+      }
+    },
+    uglify: {
+      options: {
+        banner: "<%= banner %>"
+      },
+      dist: {
+        src: "<%= concat.app.dest %>",
+        dest: "dist/js/app.min.js"
       }
     },
     server: {
@@ -60,7 +88,7 @@ module.exports = function(grunt) {
         },
         sass: {
             files: ["<%= files.sass.src %>"],
-            tasks: ["sass:dist"]
+            tasks: ["sass:dev"]
         }
     },
     // one-off task "grunt clean", which clears our generated files and build files.
@@ -81,8 +109,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-sass");
   grunt.loadNpmTasks("grunt-contrib-copy");
   grunt.loadNpmTasks("grunt-contrib-clean");
+  grunt.loadNpmTasks("grunt-contrib-uglify");
 
   // creating workflows
-  grunt.registerTask("default", ["copy", "sass:dist", "concat", "server", "watch"]);
+  grunt.registerTask("default", ["copy", "sass:dev", "concat", "server", "watch"]);
+  grunt.registerTask("build", ["copy", "sass:dist", "concat", "uglify"]);
 
 };

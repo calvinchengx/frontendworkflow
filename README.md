@@ -12,3 +12,4 @@
 - npm install compression --save-dev
 - npm install errorhandler --save-dev
 - npm install grunt-contrib-copy --save
+- npm install grunt-contrib-uglify --save
