@@ -35,7 +35,7 @@ module.exports = function(grunt) {
     browserify: {
       app: {
         files: {
-          'generated/js/app.min.js': ['js/app.js'],
+            '<%= files.js.app.compiled %>': '<%= files.js.app.main %>'
         }
       },
       options: {
