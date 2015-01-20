@@ -107,7 +107,7 @@ module.exports = function(grunt) {
             tasks: ['concat']
         },
         app: {
-            files: ['<%= files.js.app.main =>'],
+            files: ['<%= files.js.app.main %>'],
             tasks: ['browserify', 'concat']
         },
         sass: {
